@@ -1,10 +1,13 @@
 package com.example.restapi;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +15,8 @@ import java.util.Map;
 public class NameController {
 
   @GetMapping("/names")
-  public List<String> getNames() {
-    return List.of("koyama", "tanaka");
+  public List<String> getNames(@RequestParam(required = false) String name, @RequestParam(required = false) @DateTimeFormat(pattern = "[yyyy-MM-dd][yyyyMMdd]") LocalDate birthday) {
+    return List.of(name, birthday.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")));
   }
 
   @PostMapping("/names")
