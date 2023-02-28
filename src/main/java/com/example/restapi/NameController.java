@@ -33,5 +33,11 @@ public class NameController {
     // 更新処理は省略
     return ResponseEntity.ok(Map.of("message", "name successfully updated"));
   }
-  
+
+  @DeleteMapping("/names/{id}")
+  public ResponseEntity<Map<String, String>> deleteName(@PathVariable("id") int id) {
+    // 削除処理は省略
+    return ResponseEntity.ok(Map.of("message", "name successfully deleted"));
+  }
+
 }
