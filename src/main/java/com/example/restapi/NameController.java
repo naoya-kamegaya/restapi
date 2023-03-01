@@ -20,7 +20,7 @@ import java.util.Map;
 public class NameController {
 
   @GetMapping("/names")
-  public List<String> getNames(@Valid @NotBlank(message = "値はNullです。") @Size(max = 19) @RequestParam String name, @RequestParam(required = false) @DateTimeFormat(pattern = "[uuuuMMdd][uuuu-MM-dd]") LocalDate birthday) {
+  public List<String> getNames(@Valid @NotBlank @Size(max = 19) @RequestParam String name, @RequestParam(required = false) @DateTimeFormat(pattern = "[uuuuMMdd][uuuu-MM-dd]") LocalDate birthday) {
     String birthdayString;
     if (birthday != null) {
       birthdayString = birthday.format(DateTimeFormatter.ofPattern("uuuu/MM/dd"));
